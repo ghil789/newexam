@@ -42,7 +42,9 @@ const Header = () => {
           <IoIosMoon />
         </Button>
         <a href="/Signin">
-          <Button gradientDuoTone="purpleToBlue">Sign in</Button>
+          <Button gradientDuoTone="purpleToBlue" outline>
+            Sign in
+          </Button>
         </a>
         <NavbarToggle />
       </div>
