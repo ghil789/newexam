@@ -3,8 +3,9 @@ import Home from "./pages/home";
 import About from "./pages/about";
 import Dashboard from "./pages/dashboard";
 import Signin from "./pages/signin";
-import Signup from "./pages/signup";
+import Signup from "./pages/Signup";
 import Header from "./components/Header";
+import Footer from "./components/FooterCom";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/Signin" element={<Signin />} />
         <Route path="/Signup" element={<Signup />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
