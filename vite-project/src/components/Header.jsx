@@ -1,5 +1,10 @@
 import {
+  Avatar,
   Button,
+  Dropdown,
+  DropdownDivider,
+  DropdownHeader,
+  DropdownItem,
   Navbar,
   NavbarCollapse,
   NavbarLink,
@@ -8,9 +13,12 @@ import {
 } from "flowbite-react";
 import { IoIosSearch } from "react-icons/io";
 import { IoIosMoon } from "react-icons/io";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const Header = () => {
   const path = useLocation().pathname;
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <Navbar className="border-b-2">
       <h1>
@@ -41,11 +49,33 @@ const Header = () => {
         <Button className="w-12 h-10 hidden sm:inline" color="gray" pill>
           <IoIosMoon />
         </Button>
-        <a href="/Signin">
-          <Button gradientDuoTone="purpleToBlue" outline>
-            Sign in
-          </Button>
-        </a>
+        {currentUser ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={<Avatar alt="user" rounded />}
+          >
+            <DropdownHeader>
+              <span className="block text-sm ">@{currentUser.username}</span>
+              <span className="block text-sm font-medium truncate ">
+                {currentUser.email}
+              </span>
+            </DropdownHeader>
+            <Link to={"/dashboard?tab=profile"}>
+              <DropdownItem>profile</DropdownItem>
+            </Link>
+
+            <DropdownDivider />
+            <DropdownItem>sign out</DropdownItem>
+          </Dropdown>
+        ) : (
+          <a href="/signin">
+            <Button gradientDuoTone="purpleToBlue" outline>
+              Sign in
+            </Button>
+          </a>
+        )}
+
         <NavbarToggle />
       </div>
       <NavbarCollapse>
