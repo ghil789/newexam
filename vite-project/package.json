@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
+    "firebase": "^11.0.2",
     "flowbite-react": "^0.10.2",
     "install": "^0.13.0",
     "npm": "^10.9.0",
