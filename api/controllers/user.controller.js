@@ -24,6 +24,9 @@ if (req.body.username){
     if (req.body.username.includes(' ')){
         return next(errorHandler(400,'user can not contain spaces'));
     }
+};
+
+
     try{
         const updateUser = await User.findByIdAndUpdate(
             req.params.userId,{
@@ -41,5 +44,5 @@ if (req.body.username){
         next(error);
     }
 
-}
+
 }; 
